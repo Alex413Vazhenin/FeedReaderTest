@@ -36,7 +36,7 @@ $(function () {
             expect(body.classList.contains('menu-hidden')).toBe(true);
         });
 
-        // this simulates the click event on menuIcon and checks the presence of menu-hidden tag after clicks
+        // Simulates the click event on menuIcon and checks the presence of menu-hidden tag after click
         it('changes the visibility when the icon is clicked', () => {
             const menuIcon = document.querySelector('.menu-icon-link');
             const body = document.querySelector('body');
@@ -69,21 +69,21 @@ $(function () {
 
     // Test suite for new feed selections
     describe('New Feed Selection', ()=>{
-        var preivousTitle;
+        var firstTitle;
 
         beforeEach((done) => {
 
             loadFeed(0, ()=>{
                 // Loading first feed
-                preivousTitle = document.querySelector('.header-title').innerHTML;
+                firstTitle = document.querySelector('.header-title').innerHTML;
                 loadFeed(1, done); // if second feed is loaded, the following test will be executed
             });
         });
 
         it('changes the content', (done) => {
             // Test, that checks if two entries are not equal
-            const currentTitle = document.querySelector('.header-title').innerHTML;
-            expect(currentTitle === preivousTitle).toBe(false);
+            const secondTitle = document.querySelector('.header-title').innerHTML;
+            expect(secondTitle === firstTitle).toBe(false);
             done();
         });
     });
