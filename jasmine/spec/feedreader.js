@@ -80,7 +80,7 @@ $(function () {
             });
         });
 
-        it('changes if two entries are different', (done) => {
+        it('checks if two entries are different', (done) => {
             // Test, that checks if two entries are not equal
             secondEntry = $('.feed').html();
             expect(secondEntry).not.toEqual(initialEntry);
