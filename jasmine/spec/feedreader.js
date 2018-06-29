@@ -68,22 +68,22 @@ $(function () {
     });
 
     // Test suite for new feed selections
-    describe('New Feed Selection', ()=>{
-        var firstTitle;
+    describe('New Feed Selection', function () {
+        var initialEntry, secondEntry;
 
-        beforeEach((done) => {
+        beforeEach(function (done) {
 
-            loadFeed(0, ()=>{
-                // Loading first feed
-                firstTitle = document.querySelector('.header-title').innerHTML;
-                loadFeed(1, done); // if second feed is loaded, the following test will be executed
+            loadFeed(0, function () {
+                // Loading initial entry
+                initialEntry = $('.feed').html();
+                loadFeed(1, done); // if second entry is loaded, the following test will be executed
             });
         });
 
-        it('changes the content', (done) => {
+        it('changes if two entries are different', (done) => {
             // Test, that checks if two entries are not equal
-            const secondTitle = document.querySelector('.header-title').innerHTML;
-            expect(secondTitle === firstTitle).toBe(false);
+            secondEntry = $('.feed').html();
+            expect(secondEntry).not.toEqual(initialEntry);
             done();
         });
     });
